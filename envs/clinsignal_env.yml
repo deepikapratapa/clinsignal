@@ -1,0 +1,31 @@
+name: clinsignal
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - torch==2.1.2
+      - pandas==2.1.4
+      - numpy==1.26.3
+      - scikit-learn
+      - matplotlib
+      - seaborn
+      - plotly
+      - spacy>=3.6.0,<3.7.0
+      - scispacy
+      - transformers
+      - sentence-transformers
+      - bertopic
+      - langchain==0.1.9
+      - langchain-community==0.0.24
+      - chromadb==0.4.22
+      - streamlit
+      - requests
+      - tqdm
+      - python-dotenv
+      - pyarrow
+      - openpyxl
+      - pytest
+      - jupyter

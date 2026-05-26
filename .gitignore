@@ -1,0 +1,11 @@
+data/raw/
+data/processed/
+*.pyc
+__pycache__/
+.env
+*.egg-info/
+.DS_Store
+logs/
+*.log
+chroma_db/
+faiss_index/
