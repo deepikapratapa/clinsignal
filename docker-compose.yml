@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: clinsignal_db
+    environment:
+      POSTGRES_DB: clinsignal
+      POSTGRES_USER: clinsignal
+      POSTGRES_PASSWORD: clinsignal_dev_2024
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U clinsignal"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    container_name: clinsignal_app
+    ports:
+      - "8501:8501"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=clinsignal
+      - DB_USER=clinsignal
+      - DB_PASSWORD=clinsignal_dev_2024
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./results:/app/results
+      - ./data:/app/data
+
+volumes:
+  postgres_data:
