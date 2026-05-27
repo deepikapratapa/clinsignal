@@ -9,3 +9,4 @@ logs/
 *.log
 chroma_db/
 faiss_index/
+AWSCLIV2.pkg
