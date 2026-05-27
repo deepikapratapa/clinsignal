@@ -1,0 +1,1379 @@
+{
+  "0": {
+    "words": [
+      "experienced pruritus",
+      "pruritus affecting",
+      "pruritus",
+      "subcutaneous",
+      "skin subcutaneous",
+      "affecting skin",
+      "subcutaneous tissue",
+      "tissue",
+      "tissue disorders",
+      "skin"
+    ],
+    "scores": [
+      0.05653170634379073,
+      0.044191828302613236,
+      0.04359056194461963,
+      0.03410665421301131,
+      0.03410665421301131,
+      0.03410665421301131,
+      0.03410665421301131,
+      0.032394212485841664,
+      0.032394212485841664,
+      0.03210907255857512
+    ],
+    "count": 84
+  },
+  "1": {
+    "words": [
+      "gastrointestinal",
+      "affecting gastrointestinal",
+      "gastrointestinal disorders",
+      "outcome recoveredresolved",
+      "recoveredresolved",
+      "recoveredresolved treatment",
+      "disorders severity",
+      "disorders",
+      "relationship",
+      "study drug"
+    ],
+    "scores": [
+      0.07013036855260313,
+      0.06950436249982843,
+      0.06950436249982843,
+      0.023950389287612374,
+      0.023950389287612374,
+      0.023950389287612374,
+      0.022820598616525144,
+      0.018046585262835042,
+      0.01677590648518311,
+      0.01677590648518311
+    ],
+    "count": 77
+  },
+  "2": {
+    "words": [
+      "affecting nervous",
+      "nervous",
+      "nervous disorders",
+      "experienced dizziness",
+      "dizziness affecting",
+      "dizziness",
+      "disorders severity",
+      "possible",
+      "drug possible",
+      "possible outcome"
+    ],
+    "scores": [
+      0.060724299332490204,
+      0.060724299332490204,
+      0.060724299332490204,
+      0.03787190870712786,
+      0.03787190870712786,
+      0.03787190870712786,
+      0.021677512775913614,
+      0.02085184098247032,
+      0.02085184098247032,
+      0.02085184098247032
+    ],
+    "count": 76
+  },
+  "3": {
+    "words": [
+      "skin",
+      "rash",
+      "experienced rash",
+      "rash affecting",
+      "subcutaneous",
+      "skin subcutaneous",
+      "affecting skin",
+      "subcutaneous tissue",
+      "tissue disorders",
+      "tissue"
+    ],
+    "scores": [
+      0.04164907046476978,
+      0.0393415669568269,
+      0.0393415669568269,
+      0.03666057591747036,
+      0.03225844857369592,
+      0.03225844857369592,
+      0.03225844857369592,
+      0.03225844857369592,
+      0.030638802359020327,
+      0.030638802359020327
+    ],
+    "count": 74
+  },
+  "4": {
+    "words": [
+      "cardiac",
+      "affecting cardiac",
+      "cardiac disorders",
+      "bradycardia affecting",
+      "bradycardia",
+      "sinus",
+      "experienced sinus",
+      "sinus bradycardia",
+      "infarction",
+      "experienced myocardial"
+    ],
+    "scores": [
+      0.05571735911181897,
+      0.05445075522868245,
+      0.05445075522868245,
+      0.030363158814547615,
+      0.030363158814547615,
+      0.028402746822359298,
+      0.028402746822359298,
+      0.026381404236475562,
+      0.020466477903816224,
+      0.020466477903816224
+    ],
+    "count": 74
+  },
+  "5": {
+    "words": [
+      "site pruritus",
+      "site",
+      "pruritus affecting",
+      "pruritus",
+      "application",
+      "application site",
+      "experienced application",
+      "general",
+      "affecting general",
+      "administration site"
+    ],
+    "scores": [
+      0.05220276244029168,
+      0.04130320883563698,
+      0.038686777903098865,
+      0.03816041230688459,
+      0.03249672100829284,
+      0.03249672100829284,
+      0.03249672100829284,
+      0.029139515819512893,
+      0.029139515819512893,
+      0.029139515819512893
+    ],
+    "count": 69
+  },
+  "6": {
+    "words": [
+      "respiratory",
+      "thoracic",
+      "respiratory thoracic",
+      "affecting respiratory",
+      "mediastinal disorders",
+      "mediastinal",
+      "thoracic mediastinal",
+      "drug outcome",
+      "affecting infections",
+      "infections infestations"
+    ],
+    "scores": [
+      0.04964396505967209,
+      0.03655255813142881,
+      0.03655255813142881,
+      0.03655255813142881,
+      0.03655255813142881,
+      0.03655255813142881,
+      0.03655255813142881,
+      0.03193237226130732,
+      0.026469693336752288,
+      0.026469693336752288
+    ],
+    "count": 66
+  },
+  "7": {
+    "words": [
+      "erythema affecting",
+      "erythema",
+      "skin subcutaneous",
+      "subcutaneous tissue",
+      "subcutaneous",
+      "affecting skin",
+      "tissue",
+      "tissue disorders",
+      "skin",
+      "disorders severity"
+    ],
+    "scores": [
+      0.05480605061196081,
+      0.05480605061196081,
+      0.034213156945602015,
+      0.034213156945602015,
+      0.034213156945602015,
+      0.034213156945602015,
+      0.032495367882918104,
+      0.032495367882918104,
+      0.03220933756689531,
+      0.01941513743461787
+    ],
+    "count": 61
+  },
+  "8": {
+    "words": [
+      "site irritation",
+      "irritation",
+      "irritation affecting",
+      "site",
+      "experienced application",
+      "application",
+      "application site",
+      "administration",
+      "general",
+      "general disorders"
+    ],
+    "scores": [
+      0.04880836083374298,
+      0.041827873327723905,
+      0.041827873327723905,
+      0.03963652635349419,
+      0.031185401206310005,
+      0.031185401206310005,
+      0.031185401206310005,
+      0.02796366721298523,
+      0.02796366721298523,
+      0.02796366721298523
+    ],
+    "count": 45
+  },
+  "9": {
+    "words": [
+      "erythema affecting",
+      "erythema",
+      "site",
+      "application",
+      "application site",
+      "experienced application",
+      "administration",
+      "general disorders",
+      "site conditions",
+      "affecting general"
+    ],
+    "scores": [
+      0.046779314300955575,
+      0.046779314300955575,
+      0.04176576124025215,
+      0.03286065003144236,
+      0.03286065003144236,
+      0.03286065003144236,
+      0.029465847683104274,
+      0.029465847683104274,
+      0.029465847683104274,
+      0.029465847683104274
+    ],
+    "count": 45
+  },
+  "10": {
+    "words": [
+      "site",
+      "experienced application",
+      "application",
+      "application site",
+      "administration",
+      "administration site",
+      "disorders administration",
+      "conditions severity",
+      "conditions",
+      "general"
+    ],
+    "scores": [
+      0.041727444028105125,
+      0.03283050264609241,
+      0.03283050264609241,
+      0.03283050264609241,
+      0.02943881479532161,
+      0.02943881479532161,
+      0.02943881479532161,
+      0.02943881479532161,
+      0.02943881479532161,
+      0.02943881479532161
+    ],
+    "count": 39
+  },
+  "11": {
+    "words": [
+      "psychiatric",
+      "affecting psychiatric",
+      "psychiatric disorders",
+      "disorders severity",
+      "disorders",
+      "possible",
+      "possible outcome",
+      "drug possible",
+      "resolved",
+      "resolved treatment"
+    ],
+    "scores": [
+      0.08921659339559515,
+      0.08921659339559515,
+      0.08921659339559515,
+      0.02304793025025298,
+      0.01822635967541501,
+      0.01818648798259462,
+      0.01818648798259462,
+      0.01818648798259462,
+      0.016885367956489372,
+      0.016885367956489372
+    ],
+    "count": 35
+  },
+  "12": {
+    "words": [
+      "connective tissue",
+      "musculoskeletal",
+      "musculoskeletal connective",
+      "affecting musculoskeletal",
+      "connective",
+      "pain",
+      "pain affecting",
+      "experienced pain",
+      "tissue",
+      "tissue disorders"
+    ],
+    "scores": [
+      0.09014873754874766,
+      0.09014873754874766,
+      0.09014873754874766,
+      0.09014873754874766,
+      0.09014873754874766,
+      0.053754074067494474,
+      0.05006883110635306,
+      0.043290827494154374,
+      0.035588147355477454,
+      0.035588147355477454
+    ],
+    "count": 21
+  },
+  "13": {
+    "words": [
+      "infestations severity",
+      "affecting infections",
+      "infestations",
+      "infections infestations",
+      "infections",
+      "infection affecting",
+      "infection",
+      "tract infection",
+      "tract",
+      "urinary"
+    ],
+    "scores": [
+      0.06988042750317774,
+      0.06988042750317774,
+      0.06988042750317774,
+      0.06988042750317774,
+      0.06988042750317774,
+      0.053581298387745516,
+      0.053581298387745516,
+      0.04492751942879781,
+      0.04446823598402031,
+      0.035805419796250904
+    ],
+    "count": 16
+  },
+  "14": {
+    "words": [
+      "urinary",
+      "drug outcome",
+      "abnormal",
+      "abnormal affecting",
+      "disorders severity",
+      "affecting investigations",
+      "investigations severity",
+      "investigations",
+      "outcome recoveredresolved",
+      "recoveredresolved treatment"
+    ],
+    "scores": [
+      0.10220542808223448,
+      0.02896560576043408,
+      0.0221865881273259,
+      0.0221865881273259,
+      0.020478331218097116,
+      0.020245431174474575,
+      0.020245431174474575,
+      0.020245431174474575,
+      0.01852772594633785,
+      0.01852772594633785
+    ],
+    "count": 15
+  },
+  "15": {
+    "words": [
+      "medical procedures",
+      "medical",
+      "surgical medical",
+      "surgical",
+      "procedures",
+      "procedures severity",
+      "affecting surgical",
+      "placebo subject",
+      "arm placebo",
+      "placebo"
+    ],
+    "scores": [
+      0.03415184416979205,
+      0.03415184416979205,
+      0.03415184416979205,
+      0.03415184416979205,
+      0.03415184416979205,
+      0.03415184416979205,
+      0.03415184416979205,
+      0.03131190010821483,
+      0.030467010721086752,
+      0.030467010721086752
+    ],
+    "count": 15
+  },
+  "16": {
+    "words": [
+      "poisoning procedural",
+      "affecting injury",
+      "injury",
+      "complications",
+      "complications severity",
+      "injury poisoning",
+      "procedural complications",
+      "poisoning",
+      "procedural",
+      "fracture affecting"
+    ],
+    "scores": [
+      0.08580740066273915,
+      0.08580740066273915,
+      0.08580740066273915,
+      0.08580740066273915,
+      0.08580740066273915,
+      0.08580740066273915,
+      0.08580740066273915,
+      0.08580740066273915,
+      0.08580740066273915,
+      0.0387646707057367
+    ],
+    "count": 14
+  },
+  "17": {
+    "words": [
+      "nutrition",
+      "nutrition disorders",
+      "metabolism",
+      "affecting metabolism",
+      "metabolism nutrition",
+      "decreased",
+      "increased",
+      "disorders severity",
+      "placebo subject",
+      "placebo"
+    ],
+    "scores": [
+      0.11674875212253157,
+      0.11674875212253157,
+      0.11674875212253157,
+      0.11674875212253157,
+      0.11674875212253157,
+      0.03966085359457502,
+      0.033806946953228494,
+      0.022327373972621942,
+      0.021495921144954334,
+      0.020915896439358487
+    ],
+    "count": 13
+  },
+  "18": {
+    "words": [
+      "site",
+      "application",
+      "application site",
+      "experienced application",
+      "administration",
+      "site conditions",
+      "general disorders",
+      "affecting general",
+      "general",
+      "conditions"
+    ],
+    "scores": [
+      0.04454070673282483,
+      0.03504393389793819,
+      0.03504393389793819,
+      0.03504393389793819,
+      0.031423578580015606,
+      0.031423578580015606,
+      0.031423578580015606,
+      0.031423578580015606,
+      0.031423578580015606,
+      0.031423578580015606
+    ],
+    "count": 13
+  },
+  "19": {
+    "words": [
+      "nervous",
+      "affecting nervous",
+      "nervous disorders",
+      "drug remote",
+      "remote outcome",
+      "remote",
+      "disorders severity",
+      "low dose",
+      "low",
+      "xanomeline low"
+    ],
+    "scores": [
+      0.0666617863783337,
+      0.0666617863783337,
+      0.0666617863783337,
+      0.02953489117564689,
+      0.02953489117564689,
+      0.02953489117564689,
+      0.023170852544920996,
+      0.020120405779894608,
+      0.020120405779894608,
+      0.020120405779894608
+    ],
+    "count": 13
+  },
+  "20": {
+    "words": [
+      "site",
+      "site irritation",
+      "irritation",
+      "irritation affecting",
+      "administration",
+      "conditions severity",
+      "general",
+      "general disorders",
+      "administration site",
+      "disorders administration"
+    ],
+    "scores": [
+      0.04173576787490906,
+      0.03956368925751339,
+      0.03390535872076723,
+      0.03390535872076723,
+      0.03328529867542048,
+      0.03328529867542048,
+      0.03328529867542048,
+      0.03328529867542048,
+      0.03328529867542048,
+      0.03328529867542048
+    ],
+    "count": 13
+  },
+  "21": {
+    "words": [
+      "experienced ventricular",
+      "ventricular",
+      "experienced supraventricular",
+      "supraventricular",
+      "affecting cardiac",
+      "cardiac disorders",
+      "cardiac",
+      "disorders severity",
+      "disorders",
+      "low dose"
+    ],
+    "scores": [
+      0.07798576264701697,
+      0.07798576264701697,
+      0.05136368302315782,
+      0.05136368302315782,
+      0.050565964504764756,
+      0.050565964504764756,
+      0.05015013472769066,
+      0.021951333989925156,
+      0.017359168667700528,
+      0.01667875742280737
+    ],
+    "count": 13
+  },
+  "22": {
+    "words": [
+      "nasopharyngitis",
+      "nasopharyngitis affecting",
+      "experienced nasopharyngitis",
+      "infestations",
+      "infestations severity",
+      "affecting infections",
+      "infections infestations",
+      "infections",
+      "drug outcome",
+      "recoverednot resolved"
+    ],
+    "scores": [
+      0.10471790597421417,
+      0.10471790597421417,
+      0.10471790597421417,
+      0.07184029236648526,
+      0.07184029236648526,
+      0.07184029236648526,
+      0.07184029236648526,
+      0.07184029236648526,
+      0.03755540608939039,
+      0.018911612111268097
+    ],
+    "count": 12
+  },
+  "23": {
+    "words": [
+      "administration",
+      "conditions",
+      "general",
+      "administration site",
+      "site conditions",
+      "disorders administration",
+      "conditions severity",
+      "general disorders",
+      "affecting general",
+      "site"
+    ],
+    "scores": [
+      0.03402338833866195,
+      0.03402338833866195,
+      0.03402338833866195,
+      0.03402338833866195,
+      0.03402338833866195,
+      0.03402338833866195,
+      0.03402338833866195,
+      0.03402338833866195,
+      0.03402338833866195,
+      0.024112876867135632
+    ],
+    "count": 12
+  },
+  "24": {
+    "words": [
+      "possible",
+      "possible outcome",
+      "drug possible",
+      "administration",
+      "administration site",
+      "affecting general",
+      "site conditions",
+      "conditions",
+      "conditions severity",
+      "general"
+    ],
+    "scores": [
+      0.028055204230960067,
+      0.028055204230960067,
+      0.028055204230960067,
+      0.023882844964200307,
+      0.023882844964200307,
+      0.023882844964200307,
+      0.023882844964200307,
+      0.023882844964200307,
+      0.023882844964200307,
+      0.023882844964200307
+    ],
+    "count": 11
+  },
+  "25": {
+    "words": [
+      "hyperhidrosis",
+      "hyperhidrosis affecting",
+      "experienced hyperhidrosis",
+      "affecting skin",
+      "skin subcutaneous",
+      "subcutaneous",
+      "subcutaneous tissue",
+      "tissue",
+      "tissue disorders",
+      "skin"
+    ],
+    "scores": [
+      0.09309409147025234,
+      0.09309409147025234,
+      0.09309409147025234,
+      0.03398390047414942,
+      0.03398390047414942,
+      0.03398390047414942,
+      0.03398390047414942,
+      0.032277622020084204,
+      0.032277622020084204,
+      0.03199350834394016
+    ],
+    "count": 11
+  },
+  "26": {
+    "words": [
+      "administration",
+      "administration site",
+      "affecting general",
+      "general disorders",
+      "general",
+      "conditions",
+      "conditions severity",
+      "disorders administration",
+      "site conditions",
+      "site"
+    ],
+    "scores": [
+      0.03565367569655617,
+      0.03565367569655617,
+      0.03565367569655617,
+      0.03565367569655617,
+      0.03565367569655617,
+      0.03565367569655617,
+      0.03565367569655617,
+      0.03565367569655617,
+      0.03565367569655617,
+      0.02526828555035255
+    ],
+    "count": 11
+  },
+  "27": {
+    "words": [
+      "affecting skin",
+      "skin subcutaneous",
+      "subcutaneous",
+      "subcutaneous tissue",
+      "tissue",
+      "tissue disorders",
+      "skin",
+      "xanomeline low",
+      "low",
+      "low dose"
+    ],
+    "scores": [
+      0.03644158903711783,
+      0.03644158903711783,
+      0.03644158903711783,
+      0.03644158903711783,
+      0.03461191388687333,
+      0.03461191388687333,
+      0.034307253336394686,
+      0.022579008979931606,
+      0.022579008979931606,
+      0.022579008979931606
+    ],
+    "count": 10
+  },
+  "28": {
+    "words": [
+      "pain affecting",
+      "pain",
+      "experienced pain",
+      "breast disorders",
+      "reproductive breast",
+      "affecting reproductive",
+      "reproductive",
+      "breast",
+      "administration",
+      "disorders administration"
+    ],
+    "scores": [
+      0.056953295383476606,
+      0.0564417777708692,
+      0.031656417605100386,
+      0.024827848618674223,
+      0.024827848618674223,
+      0.024827848618674223,
+      0.024827848618674223,
+      0.024827848618674223,
+      0.020373528969460666,
+      0.020373528969460666
+    ],
+    "count": 10
+  },
+  "29": {
+    "words": [
+      "discharge affecting",
+      "discharge",
+      "site conditions",
+      "conditions",
+      "general",
+      "disorders administration",
+      "conditions severity",
+      "general disorders",
+      "administration",
+      "affecting general"
+    ],
+    "scores": [
+      0.028259235474510397,
+      0.028259235474510397,
+      0.02817080548863697,
+      0.02817080548863697,
+      0.02817080548863697,
+      0.02817080548863697,
+      0.02817080548863697,
+      0.02817080548863697,
+      0.02817080548863697,
+      0.02817080548863697
+    ],
+    "count": 10
+  },
+  "30": {
+    "words": [
+      "mellitus",
+      "diabetes",
+      "diabetes mellitus",
+      "event",
+      "subject",
+      "study",
+      "low",
+      "xanomeline low",
+      "low dose",
+      "mild"
+    ],
+    "scores": [
+      0.18858862411031824,
+      0.18858862411031824,
+      0.18858862411031824,
+      0.18108198270242415,
+      0.11855666119640502,
+      0.049937039570514666,
+      0.04715720104662799,
+      0.04715720104662799,
+      0.04715720104662799,
+      0.036098509331767364
+    ],
+    "count": 10
+  },
+  "31": {
+    "words": [
+      "headache affecting",
+      "headache",
+      "experienced headache",
+      "nervous disorders",
+      "nervous",
+      "affecting nervous",
+      "arm placebo",
+      "placebo",
+      "placebo subject",
+      "disorders severity"
+    ],
+    "scores": [
+      0.09796191204039391,
+      0.09796191204039391,
+      0.09796191204039391,
+      0.06699261410229565,
+      0.06699261410229565,
+      0.06699261410229565,
+      0.04051129619107084,
+      0.04051129619107084,
+      0.0370086458053223,
+      0.023285844368965268
+    ],
+    "count": 9
+  },
+  "32": {
+    "words": [
+      "nasopharyngitis affecting",
+      "nasopharyngitis",
+      "experienced nasopharyngitis",
+      "infestations severity",
+      "infections",
+      "affecting infections",
+      "infestations",
+      "infections infestations",
+      "drug outcome",
+      "recoveredresolved treatment"
+    ],
+    "scores": [
+      0.10577156911482159,
+      0.10577156911482159,
+      0.10577156911482159,
+      0.07256314360546691,
+      0.07256314360546691,
+      0.07256314360546691,
+      0.07256314360546691,
+      0.07256314360546691,
+      0.037933285562426054,
+      0.03032983001277442
+    ],
+    "count": 9
+  },
+  "33": {
+    "words": [
+      "vascular disorders",
+      "affecting vascular",
+      "vascular",
+      "placebo",
+      "arm placebo",
+      "placebo subject",
+      "drug remote",
+      "remote outcome",
+      "remote",
+      "disorders severity"
+    ],
+    "scores": [
+      0.09923265600242602,
+      0.09923265600242602,
+      0.09923265600242602,
+      0.037859393942559744,
+      0.037859393942559744,
+      0.03335081453386603,
+      0.02943676861360155,
+      0.02943676861360155,
+      0.02943676861360155,
+      0.024870324735156702
+    ],
+    "count": 8
+  },
+  "34": {
+    "words": [
+      "probable",
+      "drug probable",
+      "probable outcome",
+      "subcutaneous",
+      "affecting skin",
+      "skin subcutaneous",
+      "subcutaneous tissue",
+      "tissue disorders",
+      "tissue",
+      "skin"
+    ],
+    "scores": [
+      0.02590253517541794,
+      0.02590253517541794,
+      0.02590253517541794,
+      0.02142679941918512,
+      0.02142679941918512,
+      0.02142679941918512,
+      0.02142679941918512,
+      0.020350993355771566,
+      0.020350993355771566,
+      0.020171860099551717
+    ],
+    "count": 8
+  },
+  "35": {
+    "words": [
+      "block",
+      "affecting cardiac",
+      "cardiac disorders",
+      "cardiac",
+      "drug outcome",
+      "disorders severity",
+      "recoverednot",
+      "resolved treatment",
+      "resolved",
+      "outcome recoverednot"
+    ],
+    "scores": [
+      0.12551530930998353,
+      0.06936847116177115,
+      0.06936847116177115,
+      0.06879801876000885,
+      0.029488450629755993,
+      0.023164417984369783,
+      0.020789118728812762,
+      0.020789118728812762,
+      0.020789118728812762,
+      0.020789118728812762
+    ],
+    "count": 8
+  },
+  "36": {
+    "words": [
+      "mediastinal disorders",
+      "thoracic",
+      "respiratory thoracic",
+      "affecting respiratory",
+      "mediastinal",
+      "thoracic mediastinal",
+      "respiratory",
+      "experienced cough",
+      "cough affecting",
+      "cough"
+    ],
+    "scores": [
+      0.07950803035730858,
+      0.07950803035730858,
+      0.07950803035730858,
+      0.07950803035730858,
+      0.07950803035730858,
+      0.07950803035730858,
+      0.07052020692635913,
+      0.05229583897516805,
+      0.051646586279799504,
+      0.051646586279799504
+    ],
+    "count": 8
+  },
+  "37": {
+    "words": [
+      "experienced electrocardiogram",
+      "electrocardiogram",
+      "affecting investigations",
+      "investigations severity",
+      "investigations",
+      "decreased affecting",
+      "remote",
+      "remote outcome",
+      "drug remote",
+      "decreased"
+    ],
+    "scores": [
+      0.1234257415567365,
+      0.1234257415567365,
+      0.09174582446834897,
+      0.09174582446834897,
+      0.09174582446834897,
+      0.04308965462745113,
+      0.039228751561514466,
+      0.039228751561514466,
+      0.039228751561514466,
+      0.038267807084021756
+    ],
+    "count": 7
+  },
+  "38": {
+    "words": [
+      "musculoskeletal",
+      "musculoskeletal connective",
+      "affecting musculoskeletal",
+      "connective",
+      "connective tissue",
+      "tissue",
+      "tissue disorders",
+      "drug outcome",
+      "disorders severity",
+      "resolved"
+    ],
+    "scores": [
+      0.09183061698062729,
+      0.09183061698062729,
+      0.09183061698062729,
+      0.09183061698062729,
+      0.09183061698062729,
+      0.036252105328527406,
+      0.036252105328527406,
+      0.030478734419561233,
+      0.020949536600603082,
+      0.018417652093436467
+    ],
+    "count": 7
+  },
+  "39": {
+    "words": [
+      "injury",
+      "poisoning procedural",
+      "complications",
+      "complications severity",
+      "poisoning",
+      "injury poisoning",
+      "affecting injury",
+      "procedural complications",
+      "procedural",
+      "remote"
+    ],
+    "scores": [
+      0.09072169312068377,
+      0.09072169312068377,
+      0.09072169312068377,
+      0.09072169312068377,
+      0.09072169312068377,
+      0.09072169312068377,
+      0.09072169312068377,
+      0.09072169312068377,
+      0.09072169312068377,
+      0.03464729152513321
+    ],
+    "count": 7
+  },
+  "40": {
+    "words": [
+      "benign",
+      "reproductive breast",
+      "reproductive",
+      "affecting reproductive",
+      "breast",
+      "breast disorders",
+      "drug outcome",
+      "severe relationship",
+      "investigations",
+      "affecting investigations"
+    ],
+    "scores": [
+      0.07776175119043814,
+      0.06231691087555681,
+      0.06231691087555681,
+      0.06231691087555681,
+      0.06231691087555681,
+      0.06231691087555681,
+      0.037966869701923554,
+      0.025466559820912792,
+      0.025273181014616335,
+      0.025273181014616335
+    ],
+    "count": 7
+  },
+  "41": {
+    "words": [
+      "affecting respiratory",
+      "thoracic mediastinal",
+      "thoracic",
+      "mediastinal disorders",
+      "mediastinal",
+      "respiratory thoracic",
+      "respiratory",
+      "remote",
+      "drug remote",
+      "remote outcome"
+    ],
+    "scores": [
+      0.07519647356403542,
+      0.07519647356403542,
+      0.07519647356403542,
+      0.07519647356403542,
+      0.07519647356403542,
+      0.07519647356403542,
+      0.066696041293404,
+      0.027921640817313235,
+      0.027921640817313235,
+      0.027921640817313235
+    ],
+    "count": 7
+  },
+  "42": {
+    "words": [
+      "ear",
+      "affecting ear",
+      "labyrinth disorders",
+      "labyrinth",
+      "ear labyrinth",
+      "infection",
+      "infection affecting",
+      "affecting infections",
+      "infestations",
+      "infections infestations"
+    ],
+    "scores": [
+      0.16434331203245217,
+      0.06343631345565165,
+      0.06343631345565165,
+      0.06343631345565165,
+      0.06343631345565165,
+      0.055932671893090084,
+      0.055932671893090084,
+      0.04376824534932925,
+      0.04376824534932925,
+      0.04376824534932925
+    ],
+    "count": 7
+  },
+  "43": {
+    "words": [
+      "injury",
+      "poisoning",
+      "poisoning procedural",
+      "injury poisoning",
+      "complications",
+      "complications severity",
+      "affecting injury",
+      "procedural",
+      "procedural complications",
+      "drug outcome"
+    ],
+    "scores": [
+      0.097290582837837,
+      0.097290582837837,
+      0.097290582837837,
+      0.097290582837837,
+      0.097290582837837,
+      0.097290582837837,
+      0.097290582837837,
+      0.097290582837837,
+      0.097290582837837,
+      0.031081814400465792
+    ],
+    "count": 6
+  },
+  "44": {
+    "words": [
+      "affecting psychiatric",
+      "psychiatric",
+      "psychiatric disorders",
+      "disorders severity",
+      "mild relationship",
+      "severity mild",
+      "mild",
+      "placebo subject",
+      "placebo",
+      "arm placebo"
+    ],
+    "scores": [
+      0.08030284566644612,
+      0.08030284566644612,
+      0.08030284566644612,
+      0.024182953951019204,
+      0.02372231450836073,
+      0.0237008388919901,
+      0.023509380951743975,
+      0.02161937223552119,
+      0.021036016447624723,
+      0.021036016447624723
+    ],
+    "count": 6
+  },
+  "45": {
+    "words": [
+      "experienced electrocardiogram",
+      "electrocardiogram",
+      "affecting investigations",
+      "investigations severity",
+      "investigations",
+      "remote",
+      "drug remote",
+      "remote outcome",
+      "placebo",
+      "arm placebo"
+    ],
+    "scores": [
+      0.12611835097845275,
+      0.12611835097845275,
+      0.09374731676850295,
+      0.09374731676850295,
+      0.09374731676850295,
+      0.02805918584596995,
+      0.02805918584596995,
+      0.02805918584596995,
+      0.02749535154730588,
+      0.02749535154730588
+    ],
+    "count": 6
+  },
+  "46": {
+    "words": [
+      "hyperhidrosis",
+      "hyperhidrosis affecting",
+      "experienced hyperhidrosis",
+      "affecting skin",
+      "skin subcutaneous",
+      "subcutaneous",
+      "subcutaneous tissue",
+      "tissue",
+      "tissue disorders",
+      "skin"
+    ],
+    "scores": [
+      0.09569034103316774,
+      0.09569034103316774,
+      0.09569034103316774,
+      0.034931658654703386,
+      0.034931658654703386,
+      0.034931658654703386,
+      0.034931658654703386,
+      0.03317779474574392,
+      0.03317779474574392,
+      0.03288575758062375
+    ],
+    "count": 6
+  },
+  "47": {
+    "words": [
+      "swelling",
+      "swelling affecting",
+      "site",
+      "administration",
+      "affecting general",
+      "site conditions",
+      "conditions",
+      "conditions severity",
+      "general disorders",
+      "disorders administration"
+    ],
+    "scores": [
+      0.08954829538816782,
+      0.08954829538816782,
+      0.03956599872653068,
+      0.030451537961471462,
+      0.030451537961471462,
+      0.030451537961471462,
+      0.030451537961471462,
+      0.030451537961471462,
+      0.030451537961471462,
+      0.030451537961471462
+    ],
+    "count": 6
+  },
+  "48": {
+    "words": [
+      "vascular",
+      "affecting vascular",
+      "vascular disorders",
+      "disorders severity",
+      "drug outcome",
+      "disorders",
+      "remote outcome",
+      "remote",
+      "drug remote",
+      "moderate relationship"
+    ],
+    "scores": [
+      0.1273732599434125,
+      0.1273732599434125,
+      0.1273732599434125,
+      0.023942327543546377,
+      0.020319156279707488,
+      0.018933651244908725,
+      0.01889225448335622,
+      0.01889225448335622,
+      0.01889225448335622,
+      0.01851340373917042
+    ],
+    "count": 6
+  },
+  "49": {
+    "words": [
+      "affecting gastrointestinal",
+      "gastrointestinal disorders",
+      "gastrointestinal",
+      "moderate outcome",
+      "possible",
+      "possible outcome",
+      "drug possible",
+      "moderate",
+      "severity moderate",
+      "disorders severity"
+    ],
+    "scores": [
+      0.07365366816062222,
+      0.07365366816062222,
+      0.07333918996482221,
+      0.030788287357357717,
+      0.026191123101153117,
+      0.026191123101153117,
+      0.026191123101153117,
+      0.02481800958731209,
+      0.02481800958731209,
+      0.024182953951019204
+    ],
+    "count": 6
+  },
+  "50": {
+    "words": [
+      "skin irritation",
+      "skin",
+      "experienced skin",
+      "irritation affecting",
+      "irritation",
+      "skin subcutaneous",
+      "subcutaneous tissue",
+      "affecting skin",
+      "subcutaneous",
+      "placebo"
+    ],
+    "scores": [
+      0.06251620093689762,
+      0.05929831287885461,
+      0.057875716064131,
+      0.04651547982134814,
+      0.04651547982134814,
+      0.03779244104452823,
+      0.03779244104452823,
+      0.03779244104452823,
+      0.03779244104452823,
+      0.036087648905838966
+    ],
+    "count": 6
+  }
+}

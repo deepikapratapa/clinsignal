@@ -1,0 +1,13 @@
+{
+  "total_known_signals": 32,
+  "structured_strict_recovery": 28,
+  "structured_strict_pct": 87.5,
+  "narrative_recovery": 29,
+  "narrative_pct": 90.6,
+  "contextual_recovery": 29,
+  "contextual_pct": 90.6,
+  "improvement_pp": 3.1,
+  "narrative_only_signals": [
+    "stroke"
+  ]
+}
