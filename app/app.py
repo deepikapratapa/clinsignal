@@ -174,8 +174,11 @@ elif page == "RAG Assessments":
         st.markdown("<div style='font-family:Space Grotesk;font-size:15px;font-weight:600;color:#f0f4ff;margin-bottom:.75rem'>Signal Classification</div>", unsafe_allow_html=True)
         fig_t = px.pie(assessments, names="signal_type", hole=0.55,
             color_discrete_map={"Known_Signal":"#f59e0b","Potential_New_Signal":"#00d4aa","Background_Noise":"#475569"})
-        fig_t.update_layout(**PLOTLY_LAYOUT, height=280)
-        fig_t.update_traces(textfont_size=12, marker=dict(line=dict(color="#0a0e1a", width=2)))
+        fig_t.update_layout(**PLOTLY_LAYOUT, height=280,
+            legend=dict(bgcolor="rgba(17,24,39,0.8)", bordercolor="#1e2d47", borderwidth=1))
+        fig_t.update_traces(textfont_size=12, marker=dict(
+            colors=["#f59e0b","#00d4aa","#475569"],
+            line=dict(color="#0a0e1a", width=2)))
         st.plotly_chart(fig_t, use_container_width=True)
     with col_r:
         st.markdown("<div style='font-family:Space Grotesk;font-size:15px;font-weight:600;color:#f0f4ff;margin-bottom:.75rem'>Recommended Actions</div>", unsafe_allow_html=True)
