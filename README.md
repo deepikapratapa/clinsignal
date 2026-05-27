@@ -1,83 +1,62 @@
 <div align="center">
 
-# drift
+<br>
 
-**Behavioral intelligence platform**
+# ⚕ ClinSignal
 
-*User archetype modeling · Churn prediction · GenAI persona generation*
-
-![CI](https://github.com/deepikapratapa/drift/actions/workflows/ci.yml/badge.svg)
-[![HuggingFace](https://img.shields.io/badge/🤗%20Live%20Demo-HuggingFace%20Spaces-a855f7)](https://huggingface.co/spaces/dpratapa/drift)
-![Python](https://img.shields.io/badge/Python-3.11-7c6af7?logo=python&logoColor=white)
-![XGBoost](https://img.shields.io/badge/XGBoost-AUC%200.9987-f76a8c)
-![AWS](https://img.shields.io/badge/AWS-S3%20%7C%20Athena-f7a26a?logo=amazon-aws&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-containerized-3b82f6?logo=docker&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-6af7a2)
+### RAG-powered pharmacovigilance signal detection from unstructured SDTM clinical trial narratives
 
 <br>
 
-![Drift Dashboard](assets/dashboard-main.png)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-54.236.63.72:8501-00d4aa?style=for-the-badge&logo=streamlit&logoColor=white)](http://54.236.63.72:8501)
+[![GitHub](https://img.shields.io/badge/GitHub-deepikapratapa-181717?style=for-the-badge&logo=github)](https://github.com/deepikapratapa/clinsignal)
+[![Python](https://img.shields.io/badge/Python-3.10-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Docker](https://img.shields.io/badge/Docker-Deployed-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
+[![AWS](https://img.shields.io/badge/AWS-EC2_+_ECR-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)](https://aws.amazon.com)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
 
 <br>
 
-### [→ Open Live Demo on HuggingFace Spaces](https://huggingface.co/spaces/dpratapa/drift)
+> Drug safety monitoring relies on coded MedDRA terms — but the most important clinical information lives in free-text narratives that no one reads systematically. ClinSignal changes that.
+
+<br>
 
 </div>
 
 ---
 
-## What it does
-
-Most analytics platforms tell you **what** users did.
-Drift tells you **who they are** and **where they're going**.
-
-Given a stream of raw user interaction events, Drift:
-
-- Engineers 48 behavioral features across 3M users from 109M raw events
-- Predicts churn probability per user with an XGBoost classifier (AUC 0.9987)
-- Clusters users into behavioral archetypes using HDBSCAN
-- Explains predictions with SHAP feature importances
-- Generates plain-English persona reports via LLaMA 3 70B (Groq)
-- Monitors production data for feature distribution drift weekly
-
----
-
-## Screenshots
+## 📸 Screenshots
 
 <table>
 <tr>
 <td width="50%">
 
-**User Analysis**
-Input behavioral metrics → get churn score, archetype, risk factors, and recommended intervention.
-
-![User Analysis](assets/dashboard-main.png)
+**Overview Dashboard**
+![Overview](docs/screenshots/Clinsignal-Tab1a.png)
+*Metrics, AE distribution by body system, treatment arm comparison, and pipeline architecture cards*
 
 </td>
 <td width="50%">
 
-**AI Persona Report**
-SHAP values feed LLaMA 3 70B to generate a plain-English behavioral narrative.
-
-![Persona Report](assets/dashboard-persona.png)
+**Adverse Event Explorer**
+![AE Explorer](docs/screenshots/Clinsignal-Tab2a.png)
+*Filter 1,191 AE records by body system, treatment arm, and severity — with clinical narrative viewer*
 
 </td>
 </tr>
 <tr>
 <td width="50%">
 
-**Model Performance**
-Live metrics, SHAP feature importance chart, ROC/PR curves, confusion matrix.
-
-![Model Performance](assets/dashboard-model.png)
+**Signal Candidates**
+![Signal Candidates](docs/screenshots/Clinsignal-Tab3a.png)
+*51 BERTopic clusters visualized by signal score vs subject coverage, color-coded by MedDRA SOC*
 
 </td>
 <td width="50%">
 
-**Behavioral Archetypes**
-HDBSCAN clusters with churn rates and feature profiles per segment.
-
-![Archetypes](assets/dashboard-archetypes.png)
+**RAG Signal Assessments**
+![RAG Assessments](docs/screenshots/Clinsignal-Tab4a.png)
+*Mistral LLM assessments grounded in MedDRA and DrugBank knowledge — classified and actionable*
 
 </td>
 </tr>
@@ -85,230 +64,226 @@ HDBSCAN clusters with churn rates and feature profiles per segment.
 
 ---
 
-## Architecture
+## 🔬 What it does
+
+Traditional pharmacovigilance reads coded MedDRA terms. A field called `AETERM` says `"nausea"`. That's it.
+
+But the investigator narrative field — where a clinician writes *"Patient experienced severe nausea accompanied by confusion and bradycardia, resolved upon discontinuation"* — contains information that never gets coded. ClinSignal surfaces those signals automatically.
+
+**The approach:**
+
+1. Parse SDTM adverse event domains and extract clinical narratives
+2. Run NLP on the narratives — named entity recognition + sentence embeddings
+3. Cluster semantically similar events into signal candidates using BERTopic
+4. Ground each signal in MedDRA ontology and drug pharmacology knowledge via RAG
+5. Generate structured signal assessments using a local LLM (zero API cost, fully reproducible)
+
+**Key result:** Narrative NLP recovers **90.6%** of known FDA pharmacovigilance signals vs **87.5%** from strict structured coding — and detects signals like *stroke* that exact PT-term matching misses entirely.
+
+---
+
+## 📊 Results
+
+<table>
+<tr>
+<td align="center"><b>1,191</b><br><sub>CDISC pilot AE records</sub></td>
+<td align="center"><b>225</b><br><sub>Unique subjects</sub></td>
+<td align="center"><b>51</b><br><sub>Signal clusters discovered</sub></td>
+<td align="center"><b>15</b><br><sub>Signals RAG-assessed</sub></td>
+<td align="center"><b>50,000+</b><br><sub>FAERS reports in PostgreSQL</sub></td>
+</tr>
+</table>
+
+| Method | Signal Recovery | Notes |
+|--------|----------------|-------|
+| Strict structured coding (exact PT match) | 87.5% | MedDRA coded fields only |
+| Narrative NLP (ClinSignal) | **90.6%** | Includes signals missed by coding |
+| Delta | **+3.1 pp** | Stroke detected in narratives, missed by exact match |
+
+**Top signal detected:** Dose-dependent neurological cluster — dizziness, syncope, balance disorder — with **42 Xanomeline High Dose** vs **3 Placebo** records. Consistent with M2 receptor-mediated cholinergic pharmacology.
+
+---
+
+## 🏗 Pipeline Architecture
 
 ```
-REES46 ecommerce events (109M rows · Oct–Nov 2019)
-                    │
-                    ▼
-        ┌─────────────────────┐
-        │  Ingestion Pipeline  │
-        │  CSV → Parquet → S3  │
-        │  AWS Athena SQL layer│
-        └──────────┬──────────┘
-                   │
-                   ▼
-        ┌──────────────────────────────────────────────┐
-        │             Feature Engineering              │
-        │                                              │
-        │  Session      Temporal       Geo/Category    │
-        │  ─────────    ──────────     ────────────    │
-        │  RFM           Hour/day       Category       │
-        │  Velocity      cyclical enc   diversity      │
-        │  Cart abdn     Night owl      Brand loyalty  │
-        │  Conversion    Payday spike   Price point    │
-        │  rate          Activity trend                │
-        │                                              │
-        │          48 features · 3M users              │
-        └───────────────┬──────────────────────────────┘
-                        │
-            ┌───────────┴───────────┐
-            ▼                       ▼
-   ┌─────────────────┐    ┌──────────────────┐
-   │  XGBoost Churn  │    │ HDBSCAN Behavior │
-   │  Classifier     │    │ Clustering       │
-   │  AUC: 0.9987    │    │ Archetypes       │
-   │  MLflow tracked │    │ Silhouette: 0.28 │
-   └────────┬────────┘    └────────┬─────────┘
-            │                      │
-            └──────────┬───────────┘
-                       ▼
-         ┌─────────────────────────┐
-         │   SHAP Explainability   │
-         │  Feature → risk factors │
-         └────────────┬────────────┘
-                      │
-                      ▼
-         ┌─────────────────────────┐
-         │    Groq GenAI Layer     │
-         │   LLaMA 3 · 70B         │
-         │  SHAP → plain-English   │
-         │    persona narratives   │
-         └────────────┬────────────┘
-                      │
-           ┌──────────┴──────────┐
-           ▼                     ▼
-   ┌──────────────┐    ┌──────────────────┐
-   │   FastAPI    │    │    Streamlit     │
-   │  REST layer  │───▶│   Dashboard      │
-   │   Docker     │    │  4 pages · live  │
-   └──────────────┘    └──────────────────┘
-                      │
-                      ▼
-         ┌─────────────────────────┐
-         │   KS Drift Monitoring   │
-         │  18 features · weekly   │
-         │  JSON + plot reports    │
-         └─────────────────────────┘
+Raw SDTM FASTQs                    PostgreSQL
+(AE, DM, CM, ADAE)                 (50k FAERS reports)
+        │                                 │
+        ▼                                 ▼
+┌─────────────────────────────────────────────────────┐
+│                                                     │
+│  01 SDTM Ingestion    pandas · SAS XPT parsing      │
+│  ─────────────────────────────────────────────────  │
+│  02 NLP Extraction    scispaCy NER                  │
+│                       sentence-transformers          │
+│                       384-dim embeddings            │
+│  ─────────────────────────────────────────────────  │
+│  03 Signal Clustering BERTopic                      │
+│                       UMAP + HDBSCAN                │
+│                       51 signal clusters            │
+│  ─────────────────────────────────────────────────  │
+│  04 RAG Grounding     ChromaDB vector store         │
+│                       MedDRA SOC descriptions       │
+│                       DrugBank pharmacology         │
+│  ─────────────────────────────────────────────────  │
+│  05 LLM Assessment    Ollama / Mistral              │
+│                       Local inference, zero cost    │
+│                       Structured signal output      │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+        │
+        ▼
+┌─────────────────┐     ┌──────────────┐     ┌─────────────┐
+│   Streamlit     │────▶│    Docker    │────▶│   AWS EC2   │
+│   4-page app    │     │  Compose     │     │  + ECR      │
+└─────────────────┘     └──────────────┘     └─────────────┘
 ```
 
 ---
 
-## Results
+## 🗃 Dataset
 
-| Model | Metric | Score |
-|---|---|---|
-| XGBoost churn classifier | ROC-AUC | **0.9987** |
-| XGBoost churn classifier | F1 Score | **0.9914** |
-| XGBoost churn classifier | Precision | **0.9999** |
-| XGBoost churn classifier | Recall | **0.9830** |
-| HDBSCAN clustering | Silhouette score | **0.2756** |
+**Primary:** CDISC Pilot SDTM Dataset (public FDA submission package)
+- Study: Xanomeline (M1/M4 muscarinic agonist) vs Placebo — Alzheimer's Disease
+- Domains: AE, DM, CM, SUPPAE, ADAE
+- 1,191 adverse event records · 225 subjects · 3 treatment arms
 
-Top predictive features by SHAP importance:
+**Validation:** FDA FAERS Q3 2024 (public)
+- 50,000 reports ingested into PostgreSQL
+- Used for benchmark validation against known FDA signal list
 
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Data ingestion | pandas, SAS XPT (`.xpt`) parsing |
+| NLP | scispaCy (`en_core_sci_lg`), sentence-transformers |
+| Signal clustering | BERTopic, UMAP, HDBSCAN |
+| RAG | ChromaDB, LangChain |
+| LLM | Ollama + Mistral 7B (local, zero cost) |
+| Database | PostgreSQL 15 (Docker) |
+| App | Streamlit, Plotly, Space Grotesk + DM Sans |
+| Containerization | Docker, docker-compose |
+| Cloud | AWS EC2 (t3.micro), AWS ECR |
+| Pipeline | Python 3.10, bash |
+
+---
+
+## 🚀 Setup & Run
+
+### Prerequisites
+
+```bash
+# Install Ollama and pull Mistral
+curl -fsSL https://ollama.com/install.sh | sh
+ollama pull mistral
 ```
-total_purchases        ████████████████████  0.7167
-total_revenue          ██████                0.1207
-avg_session_revenue    ████                  0.0812
-recency_days           █                     0.0298
-avg_price_point        █                     0.0200
+
+### Environment
+
+```bash
+conda env create -f envs/clinsignal_env.yml
+conda activate clinsignal
+
+# Install scispaCy biomedical model
+pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.3/en_core_sci_lg-0.5.3.tar.gz
+```
+
+### Data
+
+Download the CDISC pilot SDTM dataset:
+
+```bash
+cd data/raw/sdtm
+curl -L "https://github.com/cdisc-org/sdtm-adam-pilot-project/archive/refs/heads/master.zip" \
+  -o sdtm_pilot.zip && unzip sdtm_pilot.zip
+```
+
+### Run
+
+```bash
+# Start PostgreSQL
+docker compose up postgres -d
+
+# Run full pipeline
+bash run_pipeline.sh
+
+# Launch app
+streamlit run app/app.py
 ```
 
 ---
 
-## User archetypes
+## 🐳 Docker Deployment
 
-Behavioral clusters discovered via HDBSCAN on 200K users:
+```bash
+# Build and run full stack locally
+docker compose up postgres streamlit -d
 
-| Archetype | Users | Churn rate | Key signal |
-|---|---|---|---|
-| 🪟 The Window Shopper | 9,376 | 98.4% | High views, near-zero conversion |
-| 🎯 The Decisive Buyer | 155,265 | 95.2% | Low browse time, high purchase rate |
-| 🛒 The Cart Abandoner | — | — | High cart adds, rarely completes checkout |
-| 📅 The Weekend Binge | — | — | Concentrated weekend activity |
-| 💰 The Deal Hunter | — | — | Spikes around payday windows |
-
-> Archetypes are learned from data — not hand-coded rules.
-
----
-
-## GenAI persona layer
-
-SHAP feature importances feed a structured prompt to LLaMA 3 70B via Groq API:
-
-```
-The Cart Abandoner is a high-browse, low-convert user who has added items to
-cart 14 times in the past 30 days but completed only 1 purchase. Their sessions
-are longest on Sunday evenings (avg 22 min), and they browse predominantly in
-the Electronics category.
-
-Churn probability: 87%. Recommended intervention: targeted checkout nudge with
-limited-time offer, deployed Sunday 6–8pm.
+# Build for production (amd64)
+docker buildx build --platform linux/amd64 \
+  -t your-ecr-repo/clinsignal-streamlit:latest \
+  -f Dockerfile.streamlit --push .
 ```
 
 ---
 
-## Tech stack
+## 🧠 Clinical Context
 
-| Layer | Tools |
-|---|---|
-| Cloud storage | AWS S3, AWS Athena |
-| Orchestration | Prefect |
-| Feature engineering | Python, pandas, scikit-learn |
-| Modeling | XGBoost, LightGBM, HDBSCAN |
-| Experiment tracking | MLflow |
-| Explainability | SHAP |
-| GenAI layer | Groq API (LLaMA 3 70B) |
-| Serving | FastAPI |
-| Containerization | Docker |
-| CI/CD | GitHub Actions |
-| Monitoring | KS drift detection (scipy) |
-| Dashboard | Streamlit |
-| Deployment | HuggingFace Spaces |
+Xanomeline acts on M1/M4 muscarinic acetylcholine receptors in the CNS to improve cognitive function in Alzheimer's disease. It was delivered transdermally in this trial.
+
+ClinSignal correctly identifies its known safety profile:
+- **Application site reactions** (erythema, pruritus, irritation) — from transdermal patch
+- **Gastrointestinal effects** (nausea, vomiting, diarrhoea) — from peripheral M3 activation
+- **Neurological effects** (dizziness, syncope) — dose-dependent, M2-mediated
+- **Cardiac effects** (bradycardia, sinus bradycardia) — M2 receptor on cardiac tissue
+
+The dose-dependent neurological cluster (42 high dose : 31 low dose : 3 placebo) is the strongest signal and is clinically consistent with muscarinic agonist pharmacology.
 
 ---
 
-## Dataset
-
-[REES46 ecommerce behavior data](https://www.kaggle.com/datasets/mkechinov/ecommerce-behavior-data-from-multi-category-store) — 109M user interaction events (views, cart additions, purchases) across a multi-category ecommerce store, October–November 2019.
-
----
-
-## Repo structure
+## 📁 Repository Structure
 
 ```
-drift/
-├── assets/                 # Dashboard screenshots
-├── drift/
-│   ├── ingestion/          # S3 upload + Athena SQL
-│   ├── features/           # Session, temporal, geo features
-│   ├── models/             # XGBoost, HDBSCAN, SHAP, evaluation
-│   ├── serving/            # FastAPI + Groq persona layer
-│   └── monitoring/         # KS drift detection
+clinsignal/
 ├── app/
-│   └── streamlit_app.py    # Dashboard
-├── pipelines/
-│   └── prefect_flow.py     # Orchestration
-├── tests/                  # 26 tests · pytest
-├── .github/workflows/      # GitHub Actions CI
-├── Dockerfile
-└── docker-compose.yml
+│   └── app.py                  # Streamlit 4-page application
+├── data/
+│   ├── raw/sdtm/               # CDISC pilot XPT files
+│   ├── raw/faers/              # FDA FAERS Q3 2024
+│   └── processed/              # Converted CSV domains
+├── database/
+│   └── schema.sql              # PostgreSQL schema
+├── results/
+│   ├── signals/                # Embeddings, topic model, signal candidates
+│   └── validation/             # RAG signal assessments, benchmark
+├── scripts/
+│   ├── ingestion/              # SDTM parser, FAERS pipeline
+│   ├── nlp/                    # NLP extraction pipeline
+│   └── rag/                    # RAG grounding layer
+├── docs/screenshots/           # App screenshots
+├── envs/clinsignal_env.yml     # Conda environment
+├── Dockerfile.streamlit        # App container
+├── Dockerfile.pipeline         # Pipeline container
+├── docker-compose.yml          # Full stack orchestration
+└── run_pipeline.sh             # One-command pipeline runner
 ```
 
 ---
 
-## Quickstart
+## 👩‍💻 Author
 
-```bash
-git clone https://github.com/deepikapratapa/drift.git
-cd drift
-conda create -n drift python=3.11 -y && conda activate drift
-pip install -r requirements.txt && pip install -e .
-cp .env.example .env        # fill in AWS + Groq keys
-```
+**Deepika Sarala Pratapa**
+MS Applied Data Science · University of Florida · GPA 3.96
 
-Run feature engineering:
-
-```bash
-python drift/features/session_features.py
-python drift/features/temporal_features.py
-python drift/features/geo_features.py
-```
-
-Train models:
-
-```bash
-export MLFLOW_TRACKING_URI=sqlite:///mlflow.db
-python drift/models/train_churn.py
-python drift/models/train_cluster.py
-python drift/models/evaluate.py
-```
-
-Start the API and dashboard:
-
-```bash
-uvicorn drift.serving.api:app --port 8000 &
-streamlit run app/streamlit_app.py
-```
-
-Run with Docker:
-
-```bash
-docker-compose up --build
-```
-
-Run tests:
-
-```bash
-pytest tests/ -v
-```
+[![GitHub](https://img.shields.io/badge/GitHub-deepikapratapa-181717?style=flat-square&logo=github)](https://github.com/deepikapratapa)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-deepikapratapa-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/deepikapratapa)
 
 ---
 
 <div align="center">
-
-**[→ Open Live Demo on HuggingFace Spaces](https://huggingface.co/spaces/dpratapa/drift)**
-
-*Built by [Deepika Pratapa](https://github.com/deepikapratapa)*
-
+<sub>Built with Python, scispaCy, BERTopic, ChromaDB, Mistral, PostgreSQL, Docker, and AWS · CDISC pilot data is public domain</sub>
 </div>
