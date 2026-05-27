@@ -47,3 +47,7 @@ Python, scispaCy, BERTopic, sentence-transformers, ChromaDB, LangChain, Ollama/M
 Deepika Sarala Pratapa
 MS Applied Data Science, University of Florida
 GitHub: https://github.com/deepikapratapa
+
+## Live Demo
+
+http://54.236.63.72:8501
