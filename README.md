@@ -1,53 +1,314 @@
-# ClinSignal
+<div align="center">
 
-RAG-powered adverse event signal detection from unstructured SDTM clinical trial narratives.
+# drift
+
+**Behavioral intelligence platform**
+
+*User archetype modeling · Churn prediction · GenAI persona generation*
+
+![CI](https://github.com/deepikapratapa/drift/actions/workflows/ci.yml/badge.svg)
+[![HuggingFace](https://img.shields.io/badge/🤗%20Live%20Demo-HuggingFace%20Spaces-a855f7)](https://huggingface.co/spaces/dpratapa/drift)
+![Python](https://img.shields.io/badge/Python-3.11-7c6af7?logo=python&logoColor=white)
+![XGBoost](https://img.shields.io/badge/XGBoost-AUC%200.9987-f76a8c)
+![AWS](https://img.shields.io/badge/AWS-S3%20%7C%20Athena-f7a26a?logo=amazon-aws&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-containerized-3b82f6?logo=docker&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-6af7a2)
+
+<br>
+
+![Drift Dashboard](assets/dashboard-main.png)
+
+<br>
+
+### [→ Open Live Demo on HuggingFace Spaces](https://huggingface.co/spaces/dpratapa/drift)
+
+</div>
+
+---
 
 ## What it does
 
-ClinSignal detects latent pharmacovigilance signals from adverse event narratives in SDTM-formatted clinical trial data. Unlike traditional signal detection that relies solely on coded MedDRA terms, ClinSignal extracts meaning from unstructured narrative text using NLP and grounds signal assessments in biomedical ontology knowledge via RAG.
+Most analytics platforms tell you **what** users did.
+Drift tells you **who they are** and **where they're going**.
 
-## Pipeline
+Given a stream of raw user interaction events, Drift:
 
-Step 1 - SDTM Ingestion: pandas, SAS XPT parsing. Output: clean AE dataset with narratives.
-Step 2 - NLP Extraction: scispaCy NER and sentence-transformers. Output: entity lists and embeddings.
-Step 3 - Signal Clustering: BERTopic (UMAP and HDBSCAN). Output: 51 signal clusters.
-Step 4 - RAG Grounding: ChromaDB and MedDRA/DrugBank knowledge. Output: context-enriched signals.
-Step 5 - LLM Assessment: Ollama/Mistral local inference. Output: structured signal assessments.
+- Engineers 48 behavioral features across 3M users from 109M raw events
+- Predicts churn probability per user with an XGBoost classifier (AUC 0.9987)
+- Clusters users into behavioral archetypes using HDBSCAN
+- Explains predictions with SHAP feature importances
+- Generates plain-English persona reports via LLaMA 3 70B (Groq)
+- Monitors production data for feature distribution drift weekly
 
-## Dataset
+---
 
-CDISC Pilot SDTM Dataset (public) — Xanomeline vs Placebo, Alzheimer's Disease.
-1,191 adverse event records, 225 subjects, 3 treatment arms.
-Domains: AE, DM, CM, SUPPAE, ADAE.
+## Screenshots
+
+<table>
+<tr>
+<td width="50%">
+
+**User Analysis**
+Input behavioral metrics → get churn score, archetype, risk factors, and recommended intervention.
+
+![User Analysis](assets/dashboard-main.png)
+
+</td>
+<td width="50%">
+
+**AI Persona Report**
+SHAP values feed LLaMA 3 70B to generate a plain-English behavioral narrative.
+
+![Persona Report](assets/dashboard-persona.png)
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**Model Performance**
+Live metrics, SHAP feature importance chart, ROC/PR curves, confusion matrix.
+
+![Model Performance](assets/dashboard-model.png)
+
+</td>
+<td width="50%">
+
+**Behavioral Archetypes**
+HDBSCAN clusters with churn rates and feature profiles per segment.
+
+![Archetypes](assets/dashboard-archetypes.png)
+
+</td>
+</tr>
+</table>
+
+---
+
+## Architecture
+
+```
+REES46 ecommerce events (109M rows · Oct–Nov 2019)
+                    │
+                    ▼
+        ┌─────────────────────┐
+        │  Ingestion Pipeline  │
+        │  CSV → Parquet → S3  │
+        │  AWS Athena SQL layer│
+        └──────────┬──────────┘
+                   │
+                   ▼
+        ┌──────────────────────────────────────────────┐
+        │             Feature Engineering              │
+        │                                              │
+        │  Session      Temporal       Geo/Category    │
+        │  ─────────    ──────────     ────────────    │
+        │  RFM           Hour/day       Category       │
+        │  Velocity      cyclical enc   diversity      │
+        │  Cart abdn     Night owl      Brand loyalty  │
+        │  Conversion    Payday spike   Price point    │
+        │  rate          Activity trend                │
+        │                                              │
+        │          48 features · 3M users              │
+        └───────────────┬──────────────────────────────┘
+                        │
+            ┌───────────┴───────────┐
+            ▼                       ▼
+   ┌─────────────────┐    ┌──────────────────┐
+   │  XGBoost Churn  │    │ HDBSCAN Behavior │
+   │  Classifier     │    │ Clustering       │
+   │  AUC: 0.9987    │    │ Archetypes       │
+   │  MLflow tracked │    │ Silhouette: 0.28 │
+   └────────┬────────┘    └────────┬─────────┘
+            │                      │
+            └──────────┬───────────┘
+                       ▼
+         ┌─────────────────────────┐
+         │   SHAP Explainability   │
+         │  Feature → risk factors │
+         └────────────┬────────────┘
+                      │
+                      ▼
+         ┌─────────────────────────┐
+         │    Groq GenAI Layer     │
+         │   LLaMA 3 · 70B         │
+         │  SHAP → plain-English   │
+         │    persona narratives   │
+         └────────────┬────────────┘
+                      │
+           ┌──────────┴──────────┐
+           ▼                     ▼
+   ┌──────────────┐    ┌──────────────────┐
+   │   FastAPI    │    │    Streamlit     │
+   │  REST layer  │───▶│   Dashboard      │
+   │   Docker     │    │  4 pages · live  │
+   └──────────────┘    └──────────────────┘
+                      │
+                      ▼
+         ┌─────────────────────────┐
+         │   KS Drift Monitoring   │
+         │  18 features · weekly   │
+         │  JSON + plot reports    │
+         └─────────────────────────┘
+```
+
+---
 
 ## Results
 
-- 51 signal clusters discovered via BERTopic
-- 15 top signals assessed via RAG-grounded Mistral LLM
-- 4 known signals confirmed (nervous system, GI, application site, cardiac)
-- 11 potential new signals flagged for investigation
-- Dose-dependent neurological signal: 42 high dose vs 3 placebo records
+| Model | Metric | Score |
+|---|---|---|
+| XGBoost churn classifier | ROC-AUC | **0.9987** |
+| XGBoost churn classifier | F1 Score | **0.9914** |
+| XGBoost churn classifier | Precision | **0.9999** |
+| XGBoost churn classifier | Recall | **0.9830** |
+| HDBSCAN clustering | Silhouette score | **0.2756** |
 
-## Setup
+Top predictive features by SHAP importance:
 
-1. Install Ollama: curl -fsSL https://ollama.com/install.sh | sh
-2. Pull model: ollama pull mistral
-3. Create env: conda env create -f envs/clinsignal_env.yml
-4. Activate: conda activate clinsignal
-5. Install scispaCy model: pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.3/en_core_sci_lg-0.5.3.tar.gz
-6. Run pipeline: bash run_pipeline.sh
-7. Launch app: streamlit run app/app.py
+```
+total_purchases        ████████████████████  0.7167
+total_revenue          ██████                0.1207
+avg_session_revenue    ████                  0.0812
+recency_days           █                     0.0298
+avg_price_point        █                     0.0200
+```
 
-## Stack
+---
 
-Python, scispaCy, BERTopic, sentence-transformers, ChromaDB, LangChain, Ollama/Mistral, Streamlit, pandas, plotly
+## User archetypes
 
-## Author
+Behavioral clusters discovered via HDBSCAN on 200K users:
 
-Deepika Sarala Pratapa
-MS Applied Data Science, University of Florida
-GitHub: https://github.com/deepikapratapa
+| Archetype | Users | Churn rate | Key signal |
+|---|---|---|---|
+| 🪟 The Window Shopper | 9,376 | 98.4% | High views, near-zero conversion |
+| 🎯 The Decisive Buyer | 155,265 | 95.2% | Low browse time, high purchase rate |
+| 🛒 The Cart Abandoner | — | — | High cart adds, rarely completes checkout |
+| 📅 The Weekend Binge | — | — | Concentrated weekend activity |
+| 💰 The Deal Hunter | — | — | Spikes around payday windows |
 
-## Live Demo
+> Archetypes are learned from data — not hand-coded rules.
 
-http://54.236.63.72:8501
+---
+
+## GenAI persona layer
+
+SHAP feature importances feed a structured prompt to LLaMA 3 70B via Groq API:
+
+```
+The Cart Abandoner is a high-browse, low-convert user who has added items to
+cart 14 times in the past 30 days but completed only 1 purchase. Their sessions
+are longest on Sunday evenings (avg 22 min), and they browse predominantly in
+the Electronics category.
+
+Churn probability: 87%. Recommended intervention: targeted checkout nudge with
+limited-time offer, deployed Sunday 6–8pm.
+```
+
+---
+
+## Tech stack
+
+| Layer | Tools |
+|---|---|
+| Cloud storage | AWS S3, AWS Athena |
+| Orchestration | Prefect |
+| Feature engineering | Python, pandas, scikit-learn |
+| Modeling | XGBoost, LightGBM, HDBSCAN |
+| Experiment tracking | MLflow |
+| Explainability | SHAP |
+| GenAI layer | Groq API (LLaMA 3 70B) |
+| Serving | FastAPI |
+| Containerization | Docker |
+| CI/CD | GitHub Actions |
+| Monitoring | KS drift detection (scipy) |
+| Dashboard | Streamlit |
+| Deployment | HuggingFace Spaces |
+
+---
+
+## Dataset
+
+[REES46 ecommerce behavior data](https://www.kaggle.com/datasets/mkechinov/ecommerce-behavior-data-from-multi-category-store) — 109M user interaction events (views, cart additions, purchases) across a multi-category ecommerce store, October–November 2019.
+
+---
+
+## Repo structure
+
+```
+drift/
+├── assets/                 # Dashboard screenshots
+├── drift/
+│   ├── ingestion/          # S3 upload + Athena SQL
+│   ├── features/           # Session, temporal, geo features
+│   ├── models/             # XGBoost, HDBSCAN, SHAP, evaluation
+│   ├── serving/            # FastAPI + Groq persona layer
+│   └── monitoring/         # KS drift detection
+├── app/
+│   └── streamlit_app.py    # Dashboard
+├── pipelines/
+│   └── prefect_flow.py     # Orchestration
+├── tests/                  # 26 tests · pytest
+├── .github/workflows/      # GitHub Actions CI
+├── Dockerfile
+└── docker-compose.yml
+```
+
+---
+
+## Quickstart
+
+```bash
+git clone https://github.com/deepikapratapa/drift.git
+cd drift
+conda create -n drift python=3.11 -y && conda activate drift
+pip install -r requirements.txt && pip install -e .
+cp .env.example .env        # fill in AWS + Groq keys
+```
+
+Run feature engineering:
+
+```bash
+python drift/features/session_features.py
+python drift/features/temporal_features.py
+python drift/features/geo_features.py
+```
+
+Train models:
+
+```bash
+export MLFLOW_TRACKING_URI=sqlite:///mlflow.db
+python drift/models/train_churn.py
+python drift/models/train_cluster.py
+python drift/models/evaluate.py
+```
+
+Start the API and dashboard:
+
+```bash
+uvicorn drift.serving.api:app --port 8000 &
+streamlit run app/streamlit_app.py
+```
+
+Run with Docker:
+
+```bash
+docker-compose up --build
+```
+
+Run tests:
+
+```bash
+pytest tests/ -v
+```
+
+---
+
+<div align="center">
+
+**[→ Open Live Demo on HuggingFace Spaces](https://huggingface.co/spaces/dpratapa/drift)**
+
+*Built by [Deepika Pratapa](https://github.com/deepikapratapa)*
+
+</div>
