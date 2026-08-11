@@ -1,9 +1,3 @@
-"""
-RAG Grounding Layer
-- Builds vector store from MedDRA SOC/PT descriptions and drug knowledge
-- For each signal candidate, retrieves relevant context
-- Uses Ollama/Mistral to generate structured signal assessments
-"""
 import pandas as pd
 import numpy as np
 from pathlib import Path
@@ -14,7 +8,14 @@ warnings.filterwarnings("ignore")
 
 from sentence_transformers import SentenceTransformer
 import chromadb
-from chromadb.config import Settings
+
+from langchain.prompts import PromptTemplate
+from langchain_community.llms import Ollama
+from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import SentenceTransformerEmbeddings
+from langchain.schema.runnable import RunnablePassthrough
+from langchain.schema.output_parser import StrOutputParser
+
 
 RESULTS = Path("results/signals")
 VALIDATION = Path("results/validation")
@@ -230,6 +231,97 @@ Respond with exactly this JSON structure:
     except Exception as e:
         return {"error": str(e)}
 
+def build_langchain_chain(collection_path: str = "chroma_db"):
+    """Build a proper LangChain RAG chain using LCEL."""
+    print("Building LangChain RAG chain...")
+
+    embeddings = SentenceTransformerEmbeddings(
+        model_name="all-MiniLM-L6-v2"
+    )
+
+    vectorstore = Chroma(
+        persist_directory=collection_path,
+        collection_name="clinsignal_kb",
+        embedding_function=embeddings
+    )
+
+    retriever = vectorstore.as_retriever(
+        search_type="similarity",
+        search_kwargs={"k": 4}
+    )
+
+    llm = Ollama(model="mistral", temperature=0.1)
+
+    prompt = PromptTemplate.from_template(
+        """You are a pharmacovigilance expert. Respond with ONLY a JSON object, no explanation, no markdown, no backticks.
+
+Signal: SOC={soc}, terms={terms}, records={n_records}, subjects={n_subjects}, serious={serious}, arms=[{arms}]
+
+Retrieved clinical knowledge:
+{context}
+
+Respond with exactly this JSON:
+{{"signal_label": "5 word label", "signal_type": "Known_Signal or Potential_New_Signal or Background_Noise", "biological_plausibility": "High or Medium or Low", "dose_response": "Yes or No or Unclear", "clinical_significance": "High or Medium or Low", "assessment": "2 sentence interpretation", "recommended_action": "Monitor or Investigate_Further or Label_Update or No_Action"}}"""
+    )
+
+    chain = (
+        {
+            "context": retriever,
+            "soc": RunnablePassthrough(),
+            "terms": RunnablePassthrough(),
+            "n_records": RunnablePassthrough(),
+            "n_subjects": RunnablePassthrough(),
+            "serious": RunnablePassthrough(),
+            "arms": RunnablePassthrough(),
+        }
+        | prompt
+        | llm
+        | StrOutputParser()
+    )
+
+    print("LangChain RAG chain built (LCEL: retriever | prompt | llm | parser)")
+    return chain, retriever
+
+
+def assess_signal_with_langchain(signal: dict, chain, retriever) -> dict:
+    """Use LangChain RAG chain to assess a pharmacovigilance signal."""
+
+    top_terms = json.loads(signal.get("top_terms", "{}"))
+    arms = json.loads(signal.get("arm_distribution", "{}"))
+    terms_list = list(top_terms.keys())[:5]
+    arm_str = ", ".join([f"{k}: {v}" for k, v in arms.items()])
+
+    query = f"{signal['top_soc']} {' '.join(terms_list)} adverse event signal"
+
+    try:
+        raw = chain.invoke(query)
+
+        # Extract JSON
+        try:
+            return json.loads(raw)
+        except:
+            pass
+        start = raw.find("{")
+        end = raw.rfind("}") + 1
+        if start >= 0 and end > start:
+            try:
+                return json.loads(raw[start:end])
+            except:
+                pass
+        return {
+            "signal_label": "Parse error - manual review needed",
+            "signal_type": "Unknown",
+            "biological_plausibility": "Unknown",
+            "dose_response": "Unknown",
+            "clinical_significance": "Unknown",
+            "assessment": raw[:300] if raw else "No response",
+            "recommended_action": "Investigate_Further",
+            "parse_error": True
+        }
+
+    except Exception as e:
+        return {"error": str(e)}
+
 def main():
     print("=" * 50)
     print("ClinSignal RAG Grounding Layer")
@@ -243,10 +335,10 @@ def main():
     print("Loading sentence transformer...")
     model = SentenceTransformer("all-MiniLM-L6-v2")
     
-    # Build knowledge base
+    # Build knowledge base (ChromaDB)
     collection = build_knowledge_base(model)
-    
-    # Check Ollama is running
+
+    # Build LangChain RAG chain
     print("\nChecking Ollama connection...")
     try:
         r = requests.get("http://localhost:11434/api/tags", timeout=5)
@@ -256,6 +348,8 @@ def main():
         print(f"Ollama not reachable: {e}")
         print("Start Ollama with: ollama serve")
         return
+
+    chain, retriever = build_langchain_chain()
     
     # Process top 15 signal candidates
     top_signals = signals.head(15)
@@ -276,7 +370,7 @@ def main():
         context = retrieve_context(signal_dict, collection, model)
         
         # Get LLM assessment
-        assessment = assess_signal_with_llm(signal_dict, context)
+        assessment = assess_signal_with_langchain(signal_dict, chain, retriever)
         
         if "error" not in assessment:
             print(f"  Label: {assessment.get('signal_label', 'N/A')}")
